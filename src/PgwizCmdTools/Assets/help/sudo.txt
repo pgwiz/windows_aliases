@@ -1,0 +1,37 @@
+Windows CMD Elevation Helper
+
+SYNOPSIS
+    sudo - Execute a single command with administrator elevation
+
+USAGE
+    sudo <command> [arguments...]
+
+DESCRIPTION
+    Runs the specified command with administrator privileges. If the current
+    session is already elevated, runs the command directly. Otherwise, uses
+    the gsudo broker to elevate inline without opening a new window.
+
+EXAMPLES
+    sudo whoami
+        Display the current user with elevated context
+
+    sudo net stop "Print Spooler"
+        Stop a Windows service with elevation
+
+    sudo reg add HKLM\... /v ... /t REG_DWORD
+        Add registry keys that require elevation
+
+    sudo netsh wlan show profiles
+        Run network diagnostics with elevation
+
+NOTES
+    - If gsudo is installed, elevation happens inline (same window)
+    - If gsudo is not available, falls back to PowerShell RunAs (new window)
+    - Install gsudo for best experience: winget install gerardog.gsudo
+    - Requires UAC to be enabled on Windows
+
+RELATED
+    refreshsudo - Refresh stale elevation tokens
+    
+DOCUMENTATION
+    https://github.com/pgwiz/windows_aliases

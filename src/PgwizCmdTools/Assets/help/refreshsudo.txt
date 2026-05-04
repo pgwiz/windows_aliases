@@ -1,0 +1,49 @@
+Windows Elevation Token Manager
+
+SYNOPSIS
+    refreshsudo - Refresh and validate elevation token status
+
+USAGE
+    refreshsudo [--status] [--force]
+
+PARAMETERS
+    --status
+        Display current elevation token state without refreshing
+
+    --force
+        Force token refresh even if currently appears valid
+
+DESCRIPTION
+    Manages Windows elevation tokens for the current session. If your elevation
+    token becomes stale or revoked mid-session, this command refreshes the trust
+    channel by clearing cached credentials and re-triggering the UAC elevation
+    handshake.
+
+EXAMPLES
+    refreshsudo --status
+        Check if current session has a valid elevation token
+
+    refreshsudo
+        Re-establish elevation with fresh UAC prompt
+
+    refreshsudo --force
+        Force refresh of elevation token regardless of current state
+
+BEHAVIOR
+    1. Clears stale credential cache entries
+    2. Resets gsudo broker cache (if installed)
+    3. Triggers one UAC elevation prompt
+    4. Warm-starts gsudo for instant next sudo call
+    5. Reports token expiration time
+
+NOTES
+    - One-time UAC prompt required for refresh
+    - Does not affect already-running sudo commands
+    - Token valid for current session only
+    - Typically needed if: access denied on protected files, or system revoked token
+
+RELATED
+    sudo - Execute commands with elevation
+    
+DOCUMENTATION
+    https://github.com/pgwiz/windows_aliases

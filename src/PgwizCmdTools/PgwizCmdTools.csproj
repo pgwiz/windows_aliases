@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- Global Tool settings -->
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>pgwiz</AssemblyName>
+    <RootNamespace>PgwizCmdTools</RootNamespace>
+    <Nullable>enable</Nullable>
+
+    <!-- NuGet package identity -->
+    <PackageId>pgwiz.cmdtools</PackageId>
+    <Version>1.0.0</Version>
+    <Title>pgwiz Windows CMD Extensions</Title>
+    <Authors>pgwiz</Authors>
+    <PackageProjectUrl>https://github.com/pgwiz/windows_aliases</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/pgwiz/windows_aliases</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <License>MIT</License>
+    <Description>
+      Windows CMD aliases and extensions with interactive setup wizard.
+      Provides sudo/refreshsudo for elevation handling, with extensible architecture for additional aliases.
+      Uses gsudo broker for inline elevation without new windows.
+      Interactive TUI setup wizard for easy installation.
+    </Description>
+    <Summary>Windows CMD aliases: sudo, refreshsudo, and more with interactive setup wizard</Summary>
+    <Tags>windows;cmd;aliases;sudo;elevation;cli;tools;nuget</Tags>
+    <PackageReleaseNotes>
+      Initial release with sudo and refreshsudo commands.
+      Pattern A: dotnet global tool with interactive setup wizard.
+      Installs to ~/.dotnet/tools and auto-configures PATH.
+    </PackageReleaseNotes>
+
+    <!-- Global Tool packaging -->
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>pgwiz</ToolCommandName>
+
+    <!-- Embedding assets -->
+    <EnableDefaultEmbeddedResourceItems>true</EnableDefaultEmbeddedResourceItems>
+  </PropertyGroup>
+
+  <!-- Dependencies -->
+  <ItemGroup>
+    <PackageReference Include="Spectre.Console" Version="0.48.0" />
+  </ItemGroup>
+
+  <!-- Embed assets as resources -->
+  <ItemGroup>
+    <EmbeddedResource Include="Assets/**/*" />
+  </ItemGroup>
+
+  <!-- Help files -->
+  <ItemGroup>
+    <None Update="Assets/help/**/*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
