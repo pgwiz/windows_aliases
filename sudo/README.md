@@ -30,24 +30,34 @@ refreshsudo
 
 ## 📁 Installation Structure
 
-All files are located in: `%USERPROFILE%\CmdPlugins\`
+This `sudo/` directory contains all sudo & refreshsudo implementation files.
 
+**Installed to:** `%USERPROFILE%\CmdPlugins\`
+
+**Repository structure:**
 ```
-CmdPlugins\
-├── ps1\
-│   ├── sudo.ps1          ← Main sudo function
-│   └── refreshsudo.ps1   ← Token refresh function
-├── bin\
-│   ├── sudo.cmd          ← CMD shim for sudo
-│   └── refreshsudo.cmd   ← CMD shim for refreshsudo
-├── lib\                  ← (Reserved for DLLs)
-├── help\                 ← (Reserved for help files)
-├── macros\               ← (Reserved for DOSKEY macros)
-├── registry\             ← Backup of registry keys
-├── DEPLOYMENT_MANIFEST.md ← This deployment record
-├── setup-sudo.ps1        ← Installation script
-├── backup-registry.ps1   ← Backup your registry state
-└── uninstall-sudo.ps1    ← Clean uninstall script
+windows_aliases/
+├── sudo/                  ← This directory (sudo & refreshsudo)
+│   ├── ps1\
+│   │   ├── sudo.ps1       ← Main sudo function
+│   │   └── refreshsudo.ps1 ← Token refresh function
+│   ├── bin\
+│   │   ├── sudo.cmd       ← CMD shim for sudo
+│   │   └── refreshsudo.cmd ← CMD shim for refreshsudo
+│   ├── lib\               ← (Reserved for DLLs)
+│   ├── help\              ← (Reserved for help files)
+│   ├── macros\            ← (Reserved for DOSKEY macros)
+│   ├── registry\          ← Backup of registry keys
+│   ├── README.md          ← This file
+│   ├── DEPLOYMENT_MANIFEST.md
+│   ├── setup-sudo.ps1
+│   ├── backup-registry.ps1
+│   └── uninstall-sudo.ps1
+│
+├── [future-aliases]/      ← Additional aliases (organized same way)
+├── NUT.md
+├── WINDOWS_CMD_EXTENSIONS_GUIDE.md
+└── sensesudo.md
 ```
 
 ---
